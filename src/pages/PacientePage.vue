@@ -1,9 +1,43 @@
 <template>
-  <div class="container-btn">
-    <q-btn class="derecha">Cerrar Sesion</q-btn>
+  <div class="">
+    <q-btn
+      color="positive"
+      icon="fa fa-plus"
+      label="Cerrar Sesion"
+      class=""
+    ></q-btn>
   </div>
   <div>
-    <h3 class="derecha">Seleccione una opcion</h3>
+    <div class="row justify-end">
+      <q-card class="my-card q-ma-md col-12 col-md-1">
+        <q-card-section>
+          <div class="text-h6">Our Changing Planet</div>
+          <div class="text-subtitle2">by John Doe</div>
+        </q-card-section>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </q-card-section>
+      </q-card>
+      <q-card class="my-card q-ma-md">
+        <q-card-section>
+          <div class="text-h6">Our Changing Planet</div>
+          <div class="text-subtitle2">by John Doe</div>
+        </q-card-section>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </q-card-section>
+      </q-card>
+      <q-card class="my-card q-ma-md">
+        <q-card-section>
+          <div class="text-h6">Our Changing Planet</div>
+          <div class="text-subtitle2">by John Doe</div>
+        </q-card-section>
+        <q-card-section>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+        </q-card-section>
+      </q-card>
+    </div>
+    <span class="text-h3 bg-orange-3">Seleccione una opcion</span>
     <div class="row">
       <div class="col-6">
         <q-img
@@ -42,17 +76,7 @@
   </div>
 </template>
 
-
-<style sco>
-.container-btn {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 5px;
-  margin-right: 5px;
-}
-.container {
-  display: grid;
-}
+<style scoped>
 .imagen {
   width: 300px;
   height: 400px;
