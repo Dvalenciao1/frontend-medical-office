@@ -1,60 +1,51 @@
 <template>
-  <div class="container-btn">
-    <q-btn class="derecha">Cerrar Sesion</q-btn>
-  </div>
-  <div>
-    <h3 class="derecha">Seleccione una opcion</h3>
-    <div class="row">
-      <div class="col-6">
-        <q-img
-          class="imagen"
-          src="../assets/quasar-logo-vertical.svg"
-          alt="doctor"
-        ></q-img>
+  <div class="container q-ma-xl">
+    <div class="row justify-end">
+      <div class="q-pa-md q-gutter-sm">
+        <q-btn
+          color="grey-7"
+          text-color="white"
+          glossy
+          unelevated
+          icon="close"
+          label="Cerrar Sesión"
+        />
       </div>
-      <div class="col-3">
-        <q-img
-          class="imagen"
-          src="../assets/quasar-logo-vertical.svg"
-          alt="doctor"
-        ></q-img>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          numquam excepturi ab modi a esse nesciunt. Pariatur magni
-          perspiciatis, obcaecati laudantium temporibus delectus ad laboriosam
-          cum optio accusantium natus corrupti.
-        </p>
+    </div>
+    <span class="text-h5">Selecciona una opción</span>
+    <div class="row justify-between q-my-xl">
+      <div class="col-4">
+        <q-card class="my-card">
+          <img src="../image/doctor.jpg" />
+
+          <q-card-section class="bg-positive">
+            <div class="text-h6">Nombre del doctor</div>
+          </q-card-section>
+        </q-card>
       </div>
-      <div class="col-3">
-        <q-img
-          class="imagen"
-          src="../assets/quasar-logo-vertical.svg"
-          alt="doctor"
-        ></q-img>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          numquam excepturi ab modi a esse nesciunt. Pariatur magni
-          perspiciatis, obcaecati laudantium temporibus delectus ad laboriosam
-          cum optio accusantium natus corrupti.
-        </p>
+      <div class="col-4">
+        <q-card class="my-card">
+          <a href="#">
+            <img
+              style="height: 433px"
+              src="../image/lista-de-verificacion.png"
+            />
+          </a>
+          <q-card-section class="bg-secondary">
+            <div class="text-h6">Historial de citas</div>
+          </q-card-section>
+        </q-card>
+      </div>
+      <div class="col-4">
+        <q-card class="my-card">
+          <a href="#">
+            <img style="height: 433px" src="../image/cita.png" />
+          </a>
+          <q-card-section class="bg-secondary">
+            <div class="text-h6">Agendar una cita</div>
+          </q-card-section>
+        </q-card>
       </div>
     </div>
   </div>
 </template>
-
-
-<style sco>
-.container-btn {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 5px;
-  margin-right: 5px;
-}
-.container {
-  display: grid;
-}
-.imagen {
-  width: 300px;
-  height: 400px;
-}
-</style>
