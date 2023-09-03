@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="container-btn">
     <q-btn class="derecha">Cerrar Sesion</q-btn>
@@ -42,3 +41,20 @@
     </div>
   </div>
 </template>
+
+
+<style sco>
+.container-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+.container {
+  display: grid;
+}
+.imagen {
+  width: 300px;
+  height: 400px;
+}
+</style>

@@ -2,7 +2,7 @@
   <q-layout view="hHh lpR fFf">
     <q-header reveal elevated class="bg-positive text-white">
       <q-toolbar>
-        <q-toolbar-title> IESS </q-toolbar-title>
+        <q-toolbar-title> IEES </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
