@@ -1,19 +1,23 @@
 const routes = [
   {
-    path: "/",
+    path: "/auth",
+    component: () => import("layouts/AuthLayout.vue"),
+    children: [{ path: "", component: () => import("pages/IndexPage.vue") }],
+  },
+  {
+    path: "/patient",
     component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: "", component: () => import("pages/IndexPage.vue") },
       {
-        path: "/paciente",
+        path: "profile",
         component: () => import("pages/PacientePage.vue"),
       },
       {
-        path: "/historialpaciente",
-        component: () => import("pages/HistorialPacientePage.vue"),
+        path: "history",
+        component: () => import("pages/HistorialPaciente.vue"),
       },
       {
-        path: "/agendar-citas",
+        path: "appointments",
         component: () => import("pages/AgendarcitasPage.vue"),
       },
     ],
