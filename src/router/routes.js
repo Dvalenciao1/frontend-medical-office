@@ -9,8 +9,8 @@ const routes = [
         component: () => import("pages/PacientePage.vue"),
       },
       {
-        path: "/historial-paciente",
-        component: () => import("pages/HistorialPaciente.vue"),
+        path: "/historialpaciente",
+        component: () => import("pages/HistorialPacientePage.vue"),
       },
       {
         path: "/agendar-citas",
