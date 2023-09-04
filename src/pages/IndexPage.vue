@@ -1,10 +1,118 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    />
+  <q-page padding class="row justify-center items-center">
+    <q-card
+      style="width: 1080px; height: 650px; border-radius: 16px"
+      class="my-card row justify-around items-center"
+    >
+      <Transition name="slide-fade">
+        <q-img
+          class="absolute-left transition__image"
+          :src="imageResult"
+          height="650px"
+          :style="{
+            'z-index': 1,
+            'border-radius':
+              border[0] +
+              'px ' +
+              border[1] +
+              'px ' +
+              border[2] +
+              'px ' +
+              border[3] +
+              'px ',
+            transform: `translateX(${imagePosition})`,
+            'max-width': 540 + 'px',
+          }"
+        />
+      </Transition>
+      <div class="col-5">
+        <q-form v-if="registerFormActive" class="">
+          <div class="q-pb-md">
+            <span class="text-h4" style="font-weight: 600">Registrate</span>
+            <p class="text-subtitle1">Ingresa los siguientes datos</p>
+          </div>
+          <div class="row q-py-md">
+            <div class="col-12 q-py-md">
+              <q-input
+                v-model="text"
+                outlined
+                type="text"
+                label="Nombre Completo"
+              />
+            </div>
+            <div class="col-12 q-py-md">
+              <q-input v-model="text" outlined type="text" label="Email" />
+            </div>
+            <div class="col-12 q-py-md">
+              <q-input
+                v-model="text"
+                outlined
+                type="password"
+                label="Password"
+              />
+            </div>
+            <div class="col-12 q-py-md">
+              <q-checkbox
+                v-model="orange"
+                label="Acepto terminos y condiciones"
+              />
+            </div>
+          </div>
+          <q-card-actions class="q-px-none" align="between">
+            <q-btn
+              label="Sign Up"
+              type="submit"
+              color="primary"
+              class="col-12 button__style"
+            />
+          </q-card-actions>
+        </q-form>
+      </div>
+      <div class="col-5 q-pa-md">
+        <q-form v-if="loginFormActive" class="">
+          <div class="q-pb-md">
+            <span class="text-h4" style="font-weight: 600">Bienvenido</span>
+            <p class="text-subtitle1">
+              Ingresa tu correo y contraseña para iniciar sesión
+            </p>
+          </div>
+          <div class="row q-py-md">
+            <div class="col-12 q-py-md">
+              <q-input v-model="text" outlined type="text" label="Email" />
+            </div>
+            <div class="col-12 q-py-md">
+              <q-input
+                v-model="text"
+                outlined
+                type="password"
+                label="Password"
+              />
+            </div>
+          </div>
+          <q-card-actions class="q-px-none" align="between">
+            <q-btn
+              label="Login"
+              type="submit"
+              color="primary"
+              class="col-5 button__style"
+            />
+            <q-btn
+              label="Sign Up"
+              color="primary"
+              outline
+              class="col-5 button__style"
+              @click="
+                (imagePosition = 100 + '%'),
+                  (border = [0, 16, 16, 0]),
+                  (imageResult = imagePaths[1]),
+                  (registerFormActive = true),
+                  (loginFormActive = false)
+              "
+            />
+          </q-card-actions>
+        </q-form>
+      </div>
+    </q-card>
   </q-page>
 </template>
 
@@ -14,11 +122,31 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "IndexPage",
   setup() {
-    const contador = ref(0);
-    console.log(contador);
+    const border = ref([16, 0, 0, 16]);
+    const imagePosition = ref(0);
+    const imagePaths = ref(["src/assets/login.svg", "src/assets/register.svg"]);
+    const imageResult = ref("src/assets/login.svg");
+    const registerFormActive = ref(false);
+    const loginFormActive = ref(true);
     return {
-      contador,
+      border,
+      imagePosition,
+      imagePaths,
+      imageResult,
+      loginFormActive,
+      registerFormActive,
     };
   },
 });
 </script>
+
+<style scoped>
+.button__style {
+  height: 50px;
+  border-radius: 8px;
+}
+
+.transition__image {
+  transition: transform 1s ease;
+}
+</style>
