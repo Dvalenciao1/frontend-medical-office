@@ -1,84 +1,51 @@
 <template>
-  <div class="">
-    <q-btn
-      color="positive"
-      icon="fa fa-plus"
-      label="Cerrar Sesion"
-      class=""
-    ></q-btn>
-  </div>
-  <div>
+  <div class="container q-ma-xl">
     <div class="row justify-end">
-      <q-card class="my-card q-ma-md col-12 col-md-1">
-        <q-card-section>
-          <div class="text-h6">Our Changing Planet</div>
-          <div class="text-subtitle2">by John Doe</div>
-        </q-card-section>
-        <q-card-section>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </q-card-section>
-      </q-card>
-      <q-card class="my-card q-ma-md">
-        <q-card-section>
-          <div class="text-h6">Our Changing Planet</div>
-          <div class="text-subtitle2">by John Doe</div>
-        </q-card-section>
-        <q-card-section>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </q-card-section>
-      </q-card>
-      <q-card class="my-card q-ma-md">
-        <q-card-section>
-          <div class="text-h6">Our Changing Planet</div>
-          <div class="text-subtitle2">by John Doe</div>
-        </q-card-section>
-        <q-card-section>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </q-card-section>
-      </q-card>
+      <div class="q-pa-md q-gutter-sm">
+        <q-btn
+          color="grey-7"
+          text-color="white"
+          glossy
+          unelevated
+          icon="close"
+          label="Cerrar Sesión"
+        />
+      </div>
     </div>
-    <span class="text-h3 bg-orange-3">Seleccione una opcion</span>
-    <div class="row">
-      <div class="col-6">
-        <q-img
-          class="imagen"
-          src="../assets/quasar-logo-vertical.svg"
-          alt="doctor"
-        ></q-img>
+    <span class="text-h5">Selecciona una opción</span>
+    <div class="row justify-between q-my-xl">
+      <div class="col-4">
+        <q-card class="my-card">
+          <img src="../image/doctor.jpg" />
+
+          <q-card-section class="bg-positive">
+            <div class="text-h6">Nombre del doctor</div>
+          </q-card-section>
+        </q-card>
       </div>
-      <div class="col-3">
-        <q-img
-          class="imagen"
-          src="../assets/quasar-logo-vertical.svg"
-          alt="doctor"
-        ></q-img>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          numquam excepturi ab modi a esse nesciunt. Pariatur magni
-          perspiciatis, obcaecati laudantium temporibus delectus ad laboriosam
-          cum optio accusantium natus corrupti.
-        </p>
+      <div class="col-4">
+        <q-card class="my-card">
+          <a href="#">
+            <img
+              style="height: 433px"
+              src="../image/lista-de-verificacion.png"
+            />
+          </a>
+          <q-card-section class="bg-secondary">
+            <div class="text-h6">Historial de citas</div>
+          </q-card-section>
+        </q-card>
       </div>
-      <div class="col-3">
-        <q-img
-          class="imagen"
-          src="../assets/quasar-logo-vertical.svg"
-          alt="doctor"
-        ></q-img>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-          numquam excepturi ab modi a esse nesciunt. Pariatur magni
-          perspiciatis, obcaecati laudantium temporibus delectus ad laboriosam
-          cum optio accusantium natus corrupti.
-        </p>
+      <div class="col-4">
+        <q-card class="my-card">
+          <a href="#">
+            <img style="height: 433px" src="../image/cita.png" />
+          </a>
+          <q-card-section class="bg-secondary">
+            <div class="text-h6">Agendar una cita</div>
+          </q-card-section>
+        </q-card>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.imagen {
-  width: 300px;
-  height: 400px;
-}
-</style>
