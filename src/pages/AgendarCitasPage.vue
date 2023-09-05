@@ -2,7 +2,7 @@
   <div class="container q-ma-xl">
     <div class="row bg-accent justify-between">
       <div class="col-6">
-        <span class="text-h6">Medical Shedule</span>
+        <span class="text-h6">Medical Shedulesssss</span>
       </div>
       <div class="col-6">
         <div class="q-pa-md q-gutter-sm">

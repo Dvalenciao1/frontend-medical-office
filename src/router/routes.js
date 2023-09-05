@@ -14,11 +14,11 @@ const routes = [
       },
       {
         path: "history",
-        component: () => import("pages/HistorialPaciente.vue"),
+        component: () => import("pages/HistorialPacientePage.vue"),
       },
       {
         path: "appointments",
-        component: () => import("pages/AgendarcitasPage.vue"),
+        component: () => import("pages/AgendarCitasPage.vue"),
       },
     ],
   },
