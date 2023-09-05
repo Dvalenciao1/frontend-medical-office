@@ -23,7 +23,7 @@ const routes = [
             },
             {
                 path: "appointments",
-                component: () => import("pages/AgendarcitasPage.vue"),
+                component: () => import("pages/AgendarCitasPage.vue"),
             },
         ],
     },
