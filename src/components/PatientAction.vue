@@ -14,11 +14,22 @@
                 </q-card-section>
                 <q-card-actions align="right">
                     <q-btn
+                        v-if="propsObject.openPatient"
                         color="positive"
                         icon-right="fa-solid fa-arrow-right"
                         :label="propsObject.labelButton"
                         style="border-radius: 45px"
                         @click="propsObject.openPatient()"
+                        class="col-5"
+                    />
+                    <q-btn
+                        v-else
+                        color="positive"
+                        icon-right="fa-solid fa-arrow-right"
+                        :label="propsObject.labelButton"
+                        style="border-radius: 45px"
+                        :to="propsObject.to"
+                        class="col-5"
                     />
                 </q-card-actions>
             </q-card-section>

@@ -1,14 +1,10 @@
 <template>
-  <div class="container q-ma-xl">
-    <div class="text-h4">
-      <span>Historial de citas</span>
-    </div>
-    <div class="q-pa-m">
-      <div class="col-12">
-        <q-btn label="Submit" color="primary" outline></q-btn>
-        <q-btn label="Submit" color="primary" outline></q-btn>
-      </div>
-    </div>
-    <div></div>
-  </div>
+    <q-page padding>
+        <q-table
+            title="Historial de Citas"
+            :data="data"
+            :columns="columns"
+            row-key="name"
+        />
+    </q-page>
 </template>

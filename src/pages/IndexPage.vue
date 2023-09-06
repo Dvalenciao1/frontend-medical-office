@@ -46,7 +46,7 @@ export default defineComponent({
                 description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.",
                 labelButton: "Agendar cita",
-                to: "",
+
                 openPatient: () => {
                     $q.dialog({
                         component: FormPatientDialog,
@@ -68,13 +68,15 @@ export default defineComponent({
                 description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.",
                 labelButton: "Historial",
+                to: "history",
             },
             {
                 imgPath: "https://cdn.quasar.dev/img/parallax2.jpg",
-                title: "Historial de Citas",
+                title: "Crear Horarios",
                 description:
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.",
-                labelButton: "Historial",
+                labelButton: "Crear",
+                to: "doctor",
             },
         ]);
 

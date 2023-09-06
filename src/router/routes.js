@@ -1,35 +1,32 @@
 const routes = [
     {
-        path: "/",
+        path: "",
         component: () => import("layouts/MainLayout.vue"),
-        /*meta: {
+        meta: {
             requireAuth: true,
-        },*/
+        },
         children: [
             {
-                path: "",
+                path: "patient",
                 component: () => import("pages/IndexPage.vue"),
             },
             {
                 path: "history",
-                component: () => import("pages/HistorialPaciente.vue"),
+                component: () => import("pages/HistorialPacientePage.vue"),
             },
-            {
-                path: "appointments",
-                component: () => import("pages/AgendarCitasPage.vue"),
-            },
-            {
-                path: "doctor",
-                component: () => import("pages/DoctorPage.vue"),
-            },
+        ],
+    },
+    {
+        path: "",
+        component: () => import("layouts/DoctorLayout.vue"),
+        children: [
+            { path: "doctor", component: () => import("pages/DoctorPage.vue") },
         ],
     },
     {
         path: "/auth",
         component: () => import("layouts/AuthLayout.vue"),
-        children: [
-            { path: "", component: () => import("pages/AuthPage.vue") },
-        ],
+        children: [{ path: "", component: () => import("pages/AuthPage.vue") }],
     },
     // Always leave this as last one,
     // but you can also remove it

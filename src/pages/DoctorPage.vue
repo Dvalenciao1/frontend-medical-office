@@ -1,307 +1,94 @@
 <template>
-    <div>
-        <div class="row">
-            <div class="col-6">
-                <div class="q-pt-md text-center">
-                    <span class="text-h3 q-pa-xl">Bienvenido!</span>
+    <q-page padding>
+        <div class="q-pa-md">
+            <div class="form-small__blue"></div>
+            <div class="absolute title">
+                <div class="q-pb-md">
+                    <span class="text-h2 text-weight-regular">Bienvenido!</span>
                 </div>
-                <div class="q-pt-md text-center">
-                    <span class="text-h6 q-pa-xl"
-                        >Revisa tus citas pendientes en el calendario</span
-                    >
-                </div>
-                <div class="q-pt-xl text-center">
-                    <q-date style="width: 400px" v-model="days" multiple />
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="q-pa-md">
-                            <q-btn
-                                label="Nuevo horario"
-                                color="positive"
-                                @click="dialog = true"
-                            />
-
-                            <q-dialog
-                                v-model="dialog"
-                                persistent
-                                transition-show="slide-up"
-                                transition-hide="slide-down"
-                            >
-                                <q-card
-                                    class="bg-primary text-white"
-                                    style="width: 600px"
-                                >
-                                    <q-bar>
-                                        <q-space />
-
-                                        <q-btn
-                                            dense
-                                            flat
-                                            icon="minimize"
-                                            @click="maximizedToggle = false"
-                                            :disable="!maximizedToggle"
-                                        >
-                                            <q-tooltip
-                                                v-if="maximizedToggle"
-                                                class="bg-white text-primary"
-                                                >Minimize</q-tooltip
-                                            >
-                                        </q-btn>
-                                        <q-btn
-                                            dense
-                                            flat
-                                            icon="crop_square"
-                                            @click="maximizedToggle = true"
-                                            :disable="maximizedToggle"
-                                        >
-                                            <q-tooltip
-                                                v-if="!maximizedToggle"
-                                                class="bg-white text-primary"
-                                                >Maximize</q-tooltip
-                                            >
-                                        </q-btn>
-                                        <q-btn
-                                            dense
-                                            flat
-                                            icon="close"
-                                            v-close-popup
-                                        >
-                                            <q-tooltip
-                                                class="bg-white text-primary"
-                                                >Close</q-tooltip
-                                            >
-                                        </q-btn>
-                                    </q-bar>
-
-                                    <q-card-section>
-                                        <div class="text-h6">
-                                            Llenar formulario
-                                        </div>
-                                    </q-card-section>
-                                    <div class="bg-accent">
-                                        <div class="q-pa-sm">
-                                            <div
-                                                class="text-center"
-                                                style="max-width: 400px"
-                                            >
-                                                <q-input
-                                                    v-model="text"
-                                                    label="Nombre"
-                                                />
-                                                <q-input
-                                                    v-model="text"
-                                                    label="Cedula"
-                                                />
-                                                <q-input
-                                                    v-model="date"
-                                                    type="date"
-                                                    label="fecha"
-                                                />
-                                                <q-input
-                                                    v-model="time"
-                                                    type="time"
-                                                    label="Hora"
-                                                /><q-input
-                                                    v-model="text"
-                                                    label="Estado"
-                                                />
-                                                <div class>
-                                                    <q-btn
-                                                        color="primary"
-                                                        label="Enviar"
-                                                    />
-                                                    <q-btn
-                                                        color="warning"
-                                                        label="Cancelar"
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <q-card-section class="q-pt-none">
-                                    </q-card-section>
-                                </q-card>
-                            </q-dialog>
-                        </div>
-                    </div>
-
-                    <!--El otro dialog -->
-                    <div class="q-pa-md q-gutter-sm">
-                        <q-btn
-                            label="Reporte medico"
-                            color="positive"
-                            @click="dialog2 = true"
-                        />
-                        <q-dialog
-                            v-model="dialog2"
-                            persistent
-                            :maximized="maximizedToggle"
-                            transition-show="slide-up"
-                            transition-hide="slide-down"
-                        >
-                            <q-card class="bg-primary text-white">
-                                <q-bar>
-                                    <q-space />
-
-                                    <q-btn
-                                        dense
-                                        flat
-                                        icon="minimize"
-                                        @click="maximizedToggle = false"
-                                        :disable="!maximizedToggle"
-                                    >
-                                        <q-tooltip
-                                            v-if="maximizedToggle"
-                                            class="bg-white text-primary"
-                                            >Minimize</q-tooltip
-                                        >
-                                    </q-btn>
-                                    <q-btn
-                                        dense
-                                        flat
-                                        icon="crop_square"
-                                        @click="maximizedToggle = true"
-                                        :disable="maximizedToggle"
-                                    >
-                                        <q-tooltip
-                                            v-if="!maximizedToggle"
-                                            class="bg-white text-primary"
-                                            >Maximize</q-tooltip
-                                        >
-                                    </q-btn>
-                                    <q-btn
-                                        dense
-                                        flat
-                                        icon="close"
-                                        v-close-popup
-                                    >
-                                        <q-tooltip class="bg-white text-primary"
-                                            >Close</q-tooltip
-                                        >
-                                    </q-btn>
-                                </q-bar>
-
-                                <q-card-section>
-                                    <div class="text-h6">Informe</div>
-                                </q-card-section>
-                                <div class="bg-accent">
-                                    <div class="q-pa-md">
-                                        <div
-                                            class="q-gutter-md"
-                                            style="width: 1000px"
-                                        >
-                                            <div class="q-pa-md">
-                                                <q-card
-                                                    class="my-card"
-                                                    flat
-                                                    bordered
-                                                >
-                                                    <q-card-section>
-                                                        <div
-                                                            class="text-subtitle2"
-                                                        >
-                                                            by John Doe
-                                                        </div>
-                                                    </q-card-section>
-
-                                                    <q-tabs
-                                                        v-model="tab"
-                                                        class="text-teal"
-                                                    >
-                                                        <q-tab
-                                                            label="Citas pendientes"
-                                                            name="one"
-                                                        />
-                                                        <q-tab
-                                                            label="Citas anteriores"
-                                                            name="two"
-                                                        />
-                                                    </q-tabs>
-
-                                                    <q-separator />
-
-                                                    <q-tab-panels
-                                                        v-model="tab"
-                                                        animated
-                                                    >
-                                                        <q-tab-panel
-                                                            name="one"
-                                                            class="text-dark"
-                                                        >
-                                                            <div
-                                                                class="q-pa-md"
-                                                            >
-                                                                <q-table
-                                                                    class="my-sticky-header-table"
-                                                                    flat
-                                                                    bordered
-                                                                    title="Citas pendiente"
-                                                                    :rows="rows"
-                                                                    :columns="
-                                                                        columns
-                                                                    "
-                                                                    row-key="name"
-                                                                />
-                                                            </div>
-                                                        </q-tab-panel>
-
-                                                        <q-tab-panel
-                                                            name="two"
-                                                            class="text-dark"
-                                                        >
-                                                            <div
-                                                                class="q-pa-md"
-                                                            >
-                                                                <q-table
-                                                                    class="my-sticky-header-table"
-                                                                    flat
-                                                                    bordered
-                                                                    title="Citas anteriores"
-                                                                    :rows="rows"
-                                                                    :columns="
-                                                                        columns
-                                                                    "
-                                                                    row-key="name"
-                                                                />
-                                                            </div>
-                                                        </q-tab-panel>
-                                                    </q-tab-panels>
-                                                </q-card>
-                                            </div>
-
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <q-card-section class="q-pt-none">
-                                </q-card-section>
-                            </q-card>
-                        </q-dialog>
-                    </div>
+                <div class="q-py-md text-center">
+                    <p class="text-h5 text-weight-light">
+                        Revisa tus citas pendientes en el calendario
+                    </p>
                 </div>
             </div>
-
-            <div class="col-6 bg-primary">
-                <q-img style="width: 620px" src="../assets/Vector.svg" />
+            <div class="q-pa-md column absolute card-select">
+                <div class="q-py-lg text-center">
+                    <q-date style="width: 28vw; height: 24vw" v-model="days" />
+                </div>
+                <q-card-actions class="q-py-xl" align="center">
+                    <q-btn
+                        style="
+                            width: 270px;
+                            height: 75px;
+                            border-radius: 45px;
+                            font-size: 22px;
+                        "
+                        icon="fa fa-plus"
+                        no-caps
+                        color="positive"
+                        label="Nuevo Horario"
+                        class="q-mr-md text-weight-regular"
+                        @click="openDialog()"
+                    />
+                </q-card-actions>
+            </div>
+            <div class="col-6 form-big__blue text-center">
+                <q-img
+                    style="max-width: 502px; max-height: 579px"
+                    src="../assets/doctor.svg"
+                    spinner-color="primary"
+                    spinner-size="82px"
+                />
             </div>
         </div>
-    </div>
+    </q-page>
 </template>
 <script>
 import { ref } from "vue";
+import FormDoctorDialog from "src/components/FormDoctorDialog.vue";
+import { useQuasar } from "quasar";
 
 export default {
     setup() {
+        const $q = useQuasar();
         return {
             days: ref(["2023/01/01"]),
-            dialog: ref(false),
-            dialog2: ref(false),
-            maximizedToggle: ref(true),
             date: ref(""),
-            time: ref(""),
             tab: ref("one"),
+            openDialog: () => {
+                $q.dialog({
+                    component: FormDoctorDialog,
+                });
+            },
         };
     },
 };
 </script>
+<style scoped>
+.form-small__blue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0px 0px 50px 0px;
+    width: 110px;
+    height: 177px;
+    background-color: #003f91;
+}
+.form-big__blue {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0px 0px 0px 50px;
+    width: 30vw;
+    background-color: #003f91;
+}
+.card-select {
+    top: 25%;
+    left: 15%;
+}
+.title {
+    top: 10%;
+    left: 10%;
+}
+</style>

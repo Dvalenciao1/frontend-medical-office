@@ -140,7 +140,7 @@
                                             color: 'positive',
                                             position: 'top',
                                         });
-                                        $router.push('/');
+                                        $router.push('/patient');
                                     })
                                     .catch((err) => {
                                         $q.notify({
