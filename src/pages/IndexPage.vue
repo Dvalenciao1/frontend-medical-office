@@ -1,223 +1,86 @@
 <template>
-    <q-page padding class="row justify-center items-center">
-        <q-card
-            style="width: 1080px; height: 650px; border-radius: 16px"
-            class="my-card row justify-around items-center"
-        >
-            <Transition name="slide-fade">
-                <q-img
-                    class="absolute-left transition__image"
-                    :src="imageResult"
-                    height="650px"
-                    :style="{
-                        'z-index': 1,
-                        'border-radius':
-                            border[0] +
-                            'px ' +
-                            border[1] +
-                            'px ' +
-                            border[2] +
-                            'px ' +
-                            border[3] +
-                            'px ',
-                        transform: `translateX(${imagePosition})`,
-                        'max-width': 540 + 'px',
-                    }"
-                />
-            </Transition>
-            <div class="col-5">
-                <q-form v-if="registerFormActive" class="">
-                    <div class="q-pb-md">
-                        <span class="text-h4" style="font-weight: 600"
-                            >Registrate</span
-                        >
-                        <p class="text-subtitle1">
-                            Ingresa los siguientes datos
-                        </p>
-                    </div>
-                    <div class="row q-py-md">
-                        <div class="col-12 q-py-md">
-                            <q-input
-                                v-model="fullname"
-                                outlined
-                                type="text"
-                                label="Nombre Completo"
-                            />
-                        </div>
-                        <div class="col-12 q-py-md">
-                            <q-input
-                                v-model="email"
-                                outlined
-                                type="text"
-                                label="Email"
-                            />
-                        </div>
-                        <div class="col-12 q-py-md">
-                            <q-input
-                                v-model="password"
-                                outlined
-                                type="password"
-                                label="Password"
-                            />
-                        </div>
-                        <div class="col-12 q-py-md">
-                            <q-checkbox
-                                v-model="terms"
-                                label="Acepto terminos y condiciones"
-                            />
-                        </div>
-                    </div>
-                    <q-card-actions class="q-px-none" align="between">
-                        <q-btn
-                            :disabled="!terms"
-                            label="Sign Up"
-                            color="primary"
-                            class="col-12 button__style"
-                            @click="
-                                userStore
-                                    .register({ fullname, email, password })
-                                    .then((data) => {
-                                        $q.notify({
-                                            message: data.message,
-                                            color: 'positive',
-                                            position: 'top',
-                                        });
-                                        imagePosition = 0 + '%';
-                                        border = [16, 0, 0, 16];
-                                        registerFormActive = false;
-                                        loginFormActive = true;
-                                        fullname = '';
-                                        email = '';
-                                        password = '';
-                                    })
-                                    .catch((error) => {
-                                        console.log(error);
-                                    })
-                            "
-                        />
-                    </q-card-actions>
-                </q-form>
+    <q-page padding>
+        <div class="q-pa-md row">
+            <div class="col-6">
+                <span class="text-h3">Bienevido!</span>
+                <div class="text-center">
+                    <q-img
+                        src="../assets/Image.svg"
+                        alt="Doctor"
+                        style="max-width: 680px; max-height: 600px"
+                    ></q-img>
+                </div>
             </div>
-            <div class="col-5 q-pa-md">
-                <q-form v-if="loginFormActive" class="">
-                    <div class="q-pb-md">
-                        <span class="text-h4" style="font-weight: 600"
-                            >Bienvenido</span
+            <div class="col-6">
+                <span class="text-h5">Selecciona una opción</span>
+                <div class="q-pa-md">
+                    <q-scroll-area style="width: auto; height: 620px">
+                        <template
+                            v-for="(item, index) in list_actions"
+                            :key="index"
                         >
-                        <p class="text-subtitle1">
-                            Ingresa tu correo y contraseña para iniciar sesión
-                        </p>
-                    </div>
-                    <div class="row q-py-md">
-                        <div class="col-12 q-py-md">
-                            <q-input
-                                v-model="email"
-                                outlined
-                                type="text"
-                                label="Email"
-                            />
-                        </div>
-                        <div class="col-12 q-py-md">
-                            <q-input
-                                v-model="password"
-                                outlined
-                                type="password"
-                                label="Password"
-                            />
-                        </div>
-                    </div>
-                    <q-card-actions class="q-px-none" align="between">
-                        <q-btn
-                            label="Login"
-                            color="primary"
-                            class="col-5 button__style"
-                            @click="
-                                userStore
-                                    .access({ email, password })
-                                    .then((data) => {
-                                        $q.notify({
-                                            message: data.message,
-                                            color: 'positive',
-                                            position: 'top',
-                                        });
-                                    })
-                                    .catch((err) => {
-                                        $q.notify({
-                                            message: err.message,
-                                            color: 'negative',
-                                            position: 'top',
-                                        });
-                                    })
-                            "
-                        />
-                        <q-btn
-                            label="Sign Up"
-                            color="primary"
-                            outline
-                            class="col-5 button__style"
-                            @click="
-                                (imagePosition = 100 + '%'),
-                                    (border = [0, 16, 16, 0]),
-                                    (imageResult = imagePaths[1]),
-                                    (registerFormActive = true),
-                                    (loginFormActive = false)
-                            "
-                        />
-                    </q-card-actions>
-                </q-form>
+                            <PatientAction :propsObject="item" />
+                        </template>
+                    </q-scroll-area>
+                </div>
             </div>
-        </q-card>
+        </div>
     </q-page>
 </template>
 
 <script>
 import { defineComponent, ref } from "vue";
-import { useUserStore } from "../stores/user";
+import { useQuasar } from "quasar";
+import PatientAction from "src/components/PatientAction.vue";
+import FormPatientDialog from "src/components/FormPatientDialog.vue";
 
 export default defineComponent({
-    name: "IndexPage",
+    name: "PatientPage",
+    components: { PatientAction },
     setup() {
-        const border = ref([16, 0, 0, 16]);
-        const imagePosition = ref(0);
-        const imagePaths = ref([
-            "src/assets/login.svg",
-            "src/assets/register.svg",
+        const $q = useQuasar();
+        const list_actions = ref([
+            {
+                imgPath: "src/image/agendar_cita.png",
+                title: " Agendamiento de Citas Medicas",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.",
+                labelButton: "Agendar cita",
+                to: "",
+                openPatient: () => {
+                    $q.dialog({
+                        component: FormPatientDialog,
+                    })
+                        .onOk(() => {
+                            console.log("OK");
+                        })
+                        .onCancel(() => {
+                            console.log("Cancel");
+                        })
+                        .onDismiss(() => {
+                            console.log("Called on OK or Cancel");
+                        });
+                },
+            },
+            {
+                imgPath: "src/image/historial.png",
+                title: "Historial de Citas",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.",
+                labelButton: "Historial",
+            },
+            {
+                imgPath: "https://cdn.quasar.dev/img/parallax2.jpg",
+                title: "Historial de Citas",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.",
+                labelButton: "Historial",
+            },
         ]);
-        const imageResult = ref("src/assets/login.svg");
-        const registerFormActive = ref(false);
-        const loginFormActive = ref(true);
-
-        const userStore = useUserStore();
-
-        const fullname = ref("");
-        const email = ref("");
-        const password = ref("");
-        const terms = ref(false);
 
         return {
-            border,
-            imagePosition,
-            imagePaths,
-            imageResult,
-            loginFormActive,
-            registerFormActive,
-            fullname,
-            email,
-            password,
-            terms,
-            userStore,
+            list_actions,
         };
     },
 });
 </script>
-
-<style scoped>
-.button__style {
-    height: 50px;
-    border-radius: 8px;
-}
-
-.transition__image {
-    transition: transform 1s ease;
-}
-</style>
