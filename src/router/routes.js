@@ -7,14 +7,14 @@ const routes = [
         ],
     },
     {
-        path: "/patient",
+        path: "/",
         component: () => import("layouts/MainLayout.vue"),
-        meta: {
+        /*meta: {
             requireAuth: true,
-        },
+        },*/
         children: [
             {
-                path: "profile",
+                path: "patient",
                 component: () => import("pages/PacientePage.vue"),
             },
             {
@@ -24,6 +24,10 @@ const routes = [
             {
                 path: "appointments",
                 component: () => import("pages/AgendarCitasPage.vue"),
+            },
+            {
+                path: "doctor",
+                component: () => import("pages/DoctorPage.vue"),
             },
         ],
     },
