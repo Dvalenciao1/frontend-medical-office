@@ -45,17 +45,17 @@
     </q-page>
 </template>
 <script>
-import { ref } from "vue";
-import FormDoctorDialog from "src/components/FormDoctorDialog.vue";
-import { useQuasar } from "quasar";
+import { ref } from 'vue';
+import FormDoctorDialog from 'src/components/FormDoctorDialog.vue';
+import { useQuasar } from 'quasar';
 
 export default {
     setup() {
         const $q = useQuasar();
         return {
-            days: ref(["2023/01/01"]),
-            date: ref(""),
-            tab: ref("one"),
+            days: ref(['2023/01/01']),
+            date: ref(''),
+            tab: ref('one'),
             openDialog: () => {
                 $q.dialog({
                     component: FormDoctorDialog,

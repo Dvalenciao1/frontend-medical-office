@@ -46,6 +46,14 @@
                         </div>
                         <div class="col-12 q-py-md">
                             <q-input
+                                v-model="dni"
+                                outlined
+                                type="text"
+                                label="Cedula"
+                            />
+                        </div>
+                        <div class="col-12 q-py-md">
+                            <q-input
                                 v-model="email"
                                 outlined
                                 type="text"
@@ -75,7 +83,12 @@
                             class="col-12 button__style"
                             @click="
                                 userStore
-                                    .register({ fullname, email, password })
+                                    .register({
+                                        fullname,
+                                        email,
+                                        password,
+                                        dni,
+                                    })
                                     .then((data) => {
                                         $q.notify({
                                             message: data.message,
@@ -172,28 +185,28 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import { useUserStore } from "../stores/user";
-import { useRouter } from "vue-router";
+import { defineComponent, ref } from 'vue';
+import { useUserStore } from '../stores/user';
 
 export default defineComponent({
-    name: "AuthPage",
+    name: 'AuthPage',
     setup() {
         const border = ref([16, 0, 0, 16]);
         const imagePosition = ref(0);
         const imagePaths = ref([
-            "src/assets/login.svg",
-            "src/assets/register.svg",
+            'src/assets/login.svg',
+            'src/assets/register.svg',
         ]);
-        const imageResult = ref("src/assets/login.svg");
+        const imageResult = ref('src/assets/login.svg');
         const registerFormActive = ref(false);
         const loginFormActive = ref(true);
 
         const userStore = useUserStore();
 
-        const fullname = ref("");
-        const email = ref("");
-        const password = ref("");
+        const fullname = ref('');
+        const email = ref('');
+        const password = ref('');
+        const dni = ref('');
         const terms = ref(false);
 
         return {
@@ -208,6 +221,7 @@ export default defineComponent({
             password,
             terms,
             userStore,
+            dni,
         };
     },
 });

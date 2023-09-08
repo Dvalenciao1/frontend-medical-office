@@ -1,7 +1,10 @@
 <template>
     <q-layout view="hHh lpR fFf">
         <q-header style="height: 60px; border-radius: 0px 0px 16px 16px" reveal>
-            <q-toolbar class="bg-primary text-white" style="height: 60px; border-radius: 0px 0px 16px 16px">
+            <q-toolbar
+                class="bg-primary text-white"
+                style="height: 60px; border-radius: 0px 0px 16px 16px"
+            >
                 <q-btn flat round dense icon="assignment_ind" />
                 <q-toolbar-title> Medical Office </q-toolbar-title>
                 <q-btn
@@ -20,10 +23,10 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: "MainLayout",
+    name: 'MainLayout',
     setup() {
         const logout = () => {
             sessionStorage.clear();

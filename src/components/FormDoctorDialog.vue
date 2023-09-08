@@ -97,11 +97,11 @@
     </q-dialog>
 </template>
 <script>
-import { useDialogPluginComponent } from "quasar";
-import { ref } from "vue";
+import { useDialogPluginComponent } from 'quasar';
+import { ref } from 'vue';
 
 export default {
-    name: "FormDoctor",
+    name: 'FormDoctor',
     emits: [...useDialogPluginComponent.emits],
 
     setup() {
@@ -117,6 +117,7 @@ export default {
                 onDialogOK();
             },
             onCancelClick: onDialogCancel,
+            dni,
         };
     },
 };

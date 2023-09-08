@@ -1,8 +1,8 @@
 <template>
-    <q-card class="my-card q-ma-md" bordered>
+    <q-card class="my-card q-ma-md" style="" bordered>
         <q-card-section :horizontal="!$q.screen.lt.lg">
             <q-img
-                style="max-height: 265px; min-height: 250px"
+                style=" min-height: 250px"
                 :src="propsObject.imgPath"
             ></q-img>
             <q-card-section>
@@ -37,10 +37,10 @@
     </q-card>
 </template>
 <script>
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: "PatientActionComponent",
+    name: 'PatientActionComponent',
     props: {
         propsObject: { type: Object, required: true },
     },

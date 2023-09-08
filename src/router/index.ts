@@ -1,13 +1,13 @@
-import { route } from "quasar/wrappers";
+import { route } from 'quasar/wrappers';
 import {
-    createRouter,
     createMemoryHistory,
-    createWebHistory,
+    createRouter,
     createWebHashHistory,
-} from "vue-router";
-import routes from "./routes";
-import { useUserStore } from "src/stores/user";
-import { compileScript } from "vue/compiler-sfc";
+    createWebHistory,
+} from 'vue-router';
+
+import routes from './routes';
+import { useUserStore } from 'src/stores/user';
 
 /*
  * If not building with SSR mode, you can
@@ -21,7 +21,7 @@ import { compileScript } from "vue/compiler-sfc";
 export default route(function (/* { store, ssrContext } */) {
     const createHistory = process.env.SERVER
         ? createMemoryHistory
-        : process.env.VUE_ROUTER_MODE === "history"
+        : process.env.VUE_ROUTER_MODE === 'history'
         ? createWebHistory
         : createWebHashHistory;
 
@@ -37,10 +37,10 @@ export default route(function (/* { store, ssrContext } */) {
 
     Router.beforeEach((to, from, next) => {
         const auth = useUserStore().token !== null;
-        const tokenStore = sessionStorage.getItem("token");
+        const tokenStore = sessionStorage.getItem('token');
         const needAuth = to.meta.requireAuth;
         if (needAuth && !auth && !tokenStore) {
-            next("auth");
+            next('auth');
         }
         useUserStore().token = tokenStore;
         next();
