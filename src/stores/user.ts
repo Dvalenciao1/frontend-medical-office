@@ -18,6 +18,9 @@ export const useUserStore = defineStore('user', () => {
                     token.value = response.data.token;
                     client.value = response.data;
                     sessionStorage.setItem('token', String(token.value));
+                    sessionStorage.setItem('email', String(client.value.email));
+                    sessionStorage.setItem('role', String(client.value.role));
+                    sessionStorage.setItem('id', String(client.value.id));
                     resolve({ message: 'Se ha logueado' });
                 })
                 .catch((err) => {

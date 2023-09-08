@@ -1,6 +1,6 @@
 export interface IFormPatient {
-    client_id?: number;
     appointment_date?: string;
     appointment_time?: string;
-    gender?: string;
+    collaborator_id?: number;
+    client_id?: number;
 }
