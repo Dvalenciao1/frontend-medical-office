@@ -6,7 +6,6 @@
             :columns="columns"
             row-key="name"
         />
-        <q-icon name="print" />
     </q-page>
 </template>
 

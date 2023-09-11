@@ -20,11 +20,10 @@
                             :key="index"
                         >
                             <PatientAction
-                                v-if="
-                                    !item.access || item.access === client.role
-                                "
+                                v-if="!item.access || item.access === client"
                                 :propsObject="item"
                             />
+                            
                         </template>
                     </q-scroll-area>
                 </div>
@@ -38,14 +37,13 @@ import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import PatientAction from 'src/components/PatientAction.vue';
 import FormPatientDialog from 'src/components/FormPatientDialog.vue';
-import { useUserStore } from 'src/stores/user';
 
 export default defineComponent({
     name: 'PatientPage',
     components: { PatientAction },
     setup() {
         const $q = useQuasar();
-        const client = useUserStore().client;
+        const client = sessionStorage.getItem('role');
         const list_actions = ref([
             {
                 imgPath: 'src/image/agendar_cita.png',
@@ -78,7 +76,7 @@ export default defineComponent({
                 to: 'history',
             },
             {
-                imgPath: 'https://cdn.quasar.dev/img/parallax2.jpg',
+                imgPath: 'src/image/doctor.jpg',
                 title: 'Crear Horarios',
                 description:
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi aliquipex ea commodo consequat.',

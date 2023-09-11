@@ -1,4 +1,26 @@
 import moment from 'moment';
+import { h } from 'vue';
+
+const getIcon = (val: any) => {
+    if (val === null) {
+        return h('i', {
+            class: 'q-icon text-warning fa-solid fa-clock',
+            style: 'font-size: 24px',
+        });
+    }
+    if (val === true) {
+        return h('i', {
+            class: 'q-icon text-positive fa-solid fa-check',
+            style: 'font-size: 24px',
+        });
+    }
+    if (val === false) {
+        return h('i', {
+            class: 'q-icon text-negative fa-solid fa-xmark',
+            style: 'font-size: 24px',
+        });
+    }
+};
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export default [
@@ -27,7 +49,7 @@ export default [
     {
         name: 'appointment_state',
         field: 'appointment_state',
-        format: (val: any, row: any) => ,
+        format: (val: any) => getIcon(val),
         label: 'Estado',
         sortable: true,
         align: 'center',

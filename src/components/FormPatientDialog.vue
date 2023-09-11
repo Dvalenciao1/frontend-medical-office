@@ -8,10 +8,13 @@
                 <q-form class="">
                     <div class="row">
                         <div class="col-12 q-pa-md">
-                            <q-input
-                                v-model="patient.gender"
+                            <q-select
+                                v-model="patient.collaborator_id"
                                 type="text"
-                                label="Genero"
+                                :options="list_doctor"
+                                label="Doctores"
+                                emit-value
+                                map-options
                             />
                         </div>
                         <div class="col-12 q-pa-md">
@@ -110,6 +113,7 @@
 </template>
 <script lang="ts">
 import { useDialogPluginComponent } from 'quasar';
+import { useList } from 'src/composable/useList';
 import { IFormPatient } from 'src/interfaces/IFormPatient';
 import { PropType, ref, Ref } from 'vue';
 
@@ -121,12 +125,13 @@ export default {
         const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
             useDialogPluginComponent();
         const patient: Ref<IFormPatient> = ref({ ...props.data });
+        const { list_doctor } = useList();
 
         return {
             dialogRef,
             onDialogHide,
             patient,
-
+            list_doctor,
             onOKClick() {
                 onDialogOK(patient);
             },
